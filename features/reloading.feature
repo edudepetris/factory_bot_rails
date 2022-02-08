@@ -47,12 +47,12 @@ Feature: automatically reloading factory_bot definitions
     And I run `bundle binstubs bundler spring --force` with a clean environment
     And I run `bin/spring binstub --all` with a clean environment
     And I run `bin/rails test` with Spring enabled
-    And I append to "app/models/user.rb" with:
-      """
-      # User model edited
-      """
-    And I run `bin/rails test` with Spring enabled
-    And I run `bin/spring stop` with a clean environment
+    # And I append to "app/models/user.rb" with:
+    #   """
+    #   # User model edited
+    #   """
+    # And I run `bin/rails test` with Spring enabled
+    # And I run `bin/spring stop` with Spring enabled
     Then the output should contain "1 runs, 1 assertions"
     And the output should not contain "Failure:"
 
@@ -71,7 +71,7 @@ Feature: automatically reloading factory_bot definitions
 
       """
     And I run `bundle binstubs bundler spring --force` with a clean environment
-    And I run `bin/spring binstub --all` with a clean environment
+    And I run `bin/spring binstub --all` with Spring enabled
     And I run `bin/rails test` with Spring enabled
     And I append to "test/factories.rb" with:
       """
